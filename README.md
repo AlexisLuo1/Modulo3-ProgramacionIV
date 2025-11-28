@@ -1,54 +1,76 @@
-🎯 Objetivo
-Modificar la aplicación original de biblioteca personal para sustituir SQLite por MariaDB como motor de base de datos e integrar el uso de Object-Relational Mapping (ORM) mediante la biblioteca SQLAlchemy.
+Biblioteca Personal con SQLAlchemy y PyMySQL
 
-📝 Contexto
-El objetivo de esta tarea es que los estudiantes adapten la aplicación previamente desarrollada para que funcione con una base de datos MariaDB, utilizando un enfoque moderno de programación orientada a objetos con un ORM.
+Aplicación de consola en Python para administrar una biblioteca personal usando MySQL/MariaDB, SQLAlchemy como ORM y PyMySQL como conector.
 
-Esto implica reemplazar el acceso directo a SQLite por una conexión a MariaDB y usar SQLAlchemy para definir y manipular los modelos de datos.
+Objetivo
 
-📌 Requisitos funcionales
-La aplicación debe seguir ofreciendo las funcionalidades mínimas ya implementadas:
+Permitir gestionar libros mediante una aplicación de línea de comandos, utilizando SQLAlchemy para manejar la base de datos de forma orientada a objetos.
 
-Agregar nuevo libro
-➤ Añadir libros especificando título, autor, género y estado de lectura.
+Funcionalidades
 
-Actualizar información de un libro
-➤ Modificar detalles como estado de lectura, título, autor o género.
+La aplicación permite:
 
-Eliminar libro existente
-➤ Borrar un libro registrado.
+Agregar libros
 
-Ver listado de libros
-➤ Mostrar todos los libros registrados.
+Actualizar datos de un libro
 
-Buscar libros
-➤ Permitir búsquedas por título, autor o género.
+Eliminar libros
 
-Salir
-➤ Terminar el programa de forma controlada.
+Ver el listado completo
 
-🔄 Cambios y objetivos clave
-Reemplazar SQLite con MariaDB como sistema de gestión de base de datos.
+Buscar por título, autor o género
 
-Utilizar una herramienta ORM como SQLAlchemy para manejar las operaciones con la base de datos.
+Salir del programa
 
-Configurar correctamente la conexión a MariaDB, incluyendo usuario, contraseña, host y nombre de base de datos.
+Tecnologías utilizadas
 
-Incluir instrucciones claras para instalar y configurar MariaDB en el entorno de desarrollo.
+Python 3
 
-Implementar manejo de excepciones para errores comunes (conexión fallida, integridad, etc.).
+SQLAlchemy
 
-💡 Consideraciones técnicas
-El proyecto debe utilizar SQLAlchemy como ORM.
+PyMySQL
 
-Crear un archivo requirements.txt con todas las dependencias necesarias.
+MariaDB o MySQL
 
-El archivo README.md debe incluir:
+Instalación de dependencias
 
-Instrucciones para instalar MariaDB en el sistema operativo correspondiente
+Ejecute el siguiente comando: 
 
-Comandos para crear la base de datos y tabla(s)
+pip install -r requirements.txt
 
-Instrucciones para configurar la cadena de conexión
+Configuración de la base de datos
 
-Comando para ejecutar la aplicación
+Instalar MariaDB o MySQL.
+
+Crear una base de datos:
+
+CREATE DATABASE biblioteca_db;
+
+
+Asegurarse de tener un usuario con permisos:
+
+CREATE USER 'root'@'localhost' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON biblioteca_db.* TO 'root'@'localhost';
+FLUSH PRIVILEGES;
+
+
+Verificar que en el archivo Python la cadena de conexión sea:
+
+mysql+pymysql://root:1234@localhost/biblioteca_db
+
+Ejecución del programa
+
+Ejecute:
+
+python app.py
+
+Estructura recomendada del proyecto
+biblioteca/
+│── app.py
+│── requirements.txt
+
+Notas
+
+La tabla libros se crea automáticamente mediante SQLAlchemy.
+
+Si aparece un error de conexión, revise usuario, contraseña y que el servidor de MariaDB esté iniciado.
